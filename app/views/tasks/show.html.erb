@@ -1,0 +1,13 @@
+
+
+<div class="container d-flex justify-content-center">
+    <div class="card mb-15 " style="width: 18rem;">
+    <img class="card-img-top " src="..." alt="Card image cap">
+        <div class="card-body">
+            <h1>Title: <%= @task.title %></h1>
+            <p>Description: <%= @task.description%></p>
+            <p>Rate: <%= @task.rate%></p>
+            <p>Client: <%= Client.find(@task.client_tasker_id).username%></p>
+        </div>
+    </div>
+</div>

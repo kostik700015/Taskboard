@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  score: 1.5
+  balance: 1.5
+  skills: MyText
+  user: one
+
+two:
+  username: MyString
+  score: 1.5
+  balance: 1.5
+  skills: MyText
+  user: two

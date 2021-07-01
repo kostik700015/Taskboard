@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>Taskers</h1>
+    <div class="d-flex flex-wrap">
+
+
+    <% @taskers.each do |tasker|  %>
+        <div class="card mb-5 mx-3" style="width: 18rem;">
+            <img class="card-img-top mx-3" src="..." alt="Card image cap">
+            <div class="card-body ">
+                <h5 class="card-title text-center"><%= tasker.username %></h5>
+                <p class="card-text"><%= tasker.score%></p>
+                <p class="card-text"><%= tasker.skills%></p>
+                <%= link_to "About tasker", tasker, class:"btn btn-info btn-color" %>
+            </div>
+        </div>
+    <% end %>
+</div>
+</div>

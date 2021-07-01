@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <title>TaskBoard</title> -->
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+<%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+      <h2 class="my-0 mr-md-auto font-weight-normal taskboard"> TaskBoard</h2>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <% if current_user %>
+          <%= link_to "Go to board", tasks_path, class:"p-2 text-dark" %>
+          <a class="p-2 text-dark" href="#">Profile</a>
+          <% if current_user.admin %>
+            <a class="p-2 text-dark" href="#">Users</a>
+            
+          <% else %>
+
+          <%end%>  
+
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"btn btn-outline-primary" %>
+        <% else %>
+        
+          
+          <%= link_to 'Sign up', new_user_registration_path, class:"btn btn-outline-primary" %>
+          <%= link_to 'Sign in', new_user_session_path, class:"btn btn-outline-primary" %>
+        <%end%>
+      </nav>
+    </div>
+    <%= render 'layouts/alerts' %>
+    <%= yield %>
+  </body>
+</html>
