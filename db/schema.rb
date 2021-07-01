@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_30_231642) do
+ActiveRecord::Schema.define(version: 2021_07_01_192926) do
 
   create_table "clients", force: :cascade do |t|
     t.string "username"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_06_30_231642) do
     t.string "username"
     t.float "score"
     t.float "balance"
-    t.text "skills"
+    t.string "skills"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
