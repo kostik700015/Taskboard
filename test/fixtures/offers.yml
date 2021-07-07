@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rate: 1.5
+  deadline: 2021-07-07
+  message: MyText
+  task: one
+  tasker: one
+
+two:
+  rate: 1.5
+  deadline: 2021-07-07
+  message: MyText
+  task: two
+  tasker: two

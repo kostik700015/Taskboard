@@ -1,13 +1,43 @@
 
 
 <div class="container d-flex justify-content-center">
-    <div class="card mb-15 " style="width: 18rem;">
-    <img class="card-img-top " src="..." alt="Card image cap">
+    <div class="card mb-15 " style="width: 70%;">
+        <img class="card-img-top " src="..." alt="Card image cap">
         <div class="card-body">
             <h1>Title: <%= @task.title %></h1>
             <p>Description: <%= @task.description%></p>
             <p>Rate: <%= @task.rate%></p>
+            <p>Deadline: <%= @task.deadline%></p>
             <p>Client: <%= Client.find(@task.client_tasker_id).username%></p>
+            <%= link_to "Make offer",  class:"btn btn-outline-info mx-auto" %>
         </div>
+        
+    </div>
+    <div class="mx-auto">
+        <h2>Adding new offer</h2>
+        <%= form_for :offer, url: task_path do |f| %>
+        <p>Rate<br>
+            <%= f.text_field :rate %>
+        </p>
+        <p>
+            Deadline<br>
+            <%= f.text_field :deadline %>
+        </p>
+        <p>
+            Message<br>
+            <%= f.text_area :message %>
+        </p>
+
+        <p>
+            <%= f.submit 'Make offer'%>
+        </p>
+        <% end %>
+    </div>
+
+    <div id= "offers">
+        <% if @task.offers.present?%>
+        <h1>Offers</h1> 
+        <%end %>
+        <%= render  @task.offers, tasker: @tasker %>
     </div>
 </div>

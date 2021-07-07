@@ -1,0 +1,15 @@
+<h1>Profile</h1>
+<div class="container d-flex justify-content-center">
+    <div class="card mb-15 " style="width: 70%;">
+        <p>Rating: <%=@user.score%></p>
+        <p>Reviews <%=@user.score%></p>
+        <p>Balance: <%=@user.balance%></p>
+        <div class="text-left"> 
+        <%= render 'user_tasks'%>
+            <%= link_to "Completed tasks history:",  user_path, class:"btn btn-outline-info mx-auto" %>
+            <%= link_to "Current tasks:", new_task_path, class:"btn btn-outline-info mx-auto" %>
+            <%= link_to "Create new task", new_task_path, class:"btn btn-info mx-auto" %>
+            <%= link_to "Settings", edit_user_password_path, class:"btn btn-info mx-auto" %>
+        </div>
+    </div>
+</div>

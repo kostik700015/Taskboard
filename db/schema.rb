@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_01_192926) do
+ActiveRecord::Schema.define(version: 2021_07_07_210510) do
 
   create_table "clients", force: :cascade do |t|
     t.string "username"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2021_07_01_192926) do
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.float "rate"
+    t.date "deadline"
+    t.text "message"
+    t.integer "task_id"
+    t.integer "tasker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_offers_on_task_id"
+    t.index ["tasker_id"], name: "index_offers_on_tasker_id"
+  end
+
   create_table "taskers", force: :cascade do |t|
     t.string "username"
     t.float "score"
@@ -30,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_07_01_192926) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "about"
     t.index ["user_id"], name: "index_taskers_on_user_id"
   end
 
@@ -44,7 +57,6 @@ ActiveRecord::Schema.define(version: 2021_07_01_192926) do
     t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.string "user_type"
     t.integer "client_tasker_id"
     t.string "client_tasker_type"

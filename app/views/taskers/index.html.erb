@@ -4,13 +4,19 @@
 
 
     <% @taskers.each do |tasker|  %>
-        <div class="card mb-5 mx-3" style="width: 18rem;">
+        <div class="card mb-5 mx-3" style="width: 22rem;">
             <img class="card-img-top mx-3" src="..." alt="Card image cap">
             <div class="card-body ">
                 <h5 class="card-title text-center"><%= tasker.username %></h5>
-                <p class="card-text"><%= tasker.score%></p>
-                <p class="card-text"><%= tasker.skills%></p>
-                <%= link_to "About tasker", tasker, class:"btn btn-info btn-color" %>
+                <p class="card-text">Score: <%= tasker.score%></p>
+                <p class="card-text"><span class="text-limited"><%= tasker.about%></span></p>
+                <p class="card-text">Skills: </p>
+                <ul class="card-text">
+                    <% tasker.skills.each do |skill|%>
+                        <li><%= skill %></li>
+                    <% end %>
+                </ul>
+                <%= link_to "More about tasker", tasker, class:"btn btn-info btn-color" %>
             </div>
         </div>
     <% end %>

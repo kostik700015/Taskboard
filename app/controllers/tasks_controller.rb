@@ -9,7 +9,8 @@ class TasksController < ApplicationController
     end
 
     def show
-    @task = Task.find(params[:id])
+        @task = Task.find(params[:id])
+        @tasker = Tasker.find(current_user.id)
     end
 
     private 
