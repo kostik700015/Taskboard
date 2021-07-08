@@ -4,8 +4,7 @@ class UsersController < ApplicationController
     end
 
     def show
-       # @user = User.find(params[:id])
-        @user = User.find(params[:id])
+        @user = User.find(current_user.id)
         #temporary users
         if client = Client.find_by(user_id: @user.id)
             @user = client

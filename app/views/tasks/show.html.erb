@@ -15,22 +15,22 @@
     </div>
     <div class="mx-auto">
         <h2>Adding new offer</h2>
-        <%= form_for :offer, url: task_path do |f| %>
-        <p>Rate<br>
-            <%= f.text_field :rate %>
-        </p>
-        <p>
-            Deadline<br>
-            <%= f.text_field :deadline %>
-        </p>
-        <p>
-            Message<br>
-            <%= f.text_area :message %>
-        </p>
+        <%= form_for [@task, @task.offers.create(tasker_id: @tasker.id)]  do |f| %>
+            <p>Rate<br>
+                <%= f.text_field :rate %>
+            </p>
+            <p>
+                Deadline<br>
+                <%= f.text_field :deadline %>
+            </p>
+            <p>
+                Message<br>
+                <%= f.text_area :message %>
+            </p>
 
-        <p>
-            <%= f.submit 'Make offer'%>
-        </p>
+            <p>
+                <%= f.submit 'Make offer'%>
+            </p>
         <% end %>
     </div>
 

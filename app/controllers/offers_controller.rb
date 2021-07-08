@@ -1,8 +1,13 @@
 class OffersController < ApplicationController
-    def create       
+    def create  
+        byebug     
         @task = Task.find(params[:task_id])    
-        @offer = @task.offers.create(offer_params)
-        redirect_to @task
+        @tasker = Tasker.find(current_user.id)
+        tasker_id =@tasker.id
+        @offer = @task.offers.new(offer_params)
+    
+        @offer.save
+        redirect_to task_path(@task)
     end
     # def edit 
     #     @offer = Offer.find(params[:id])
@@ -14,6 +19,6 @@ class OffersController < ApplicationController
     # end
     private
     def offer_params
-        params.require(:offer).permit(:rate, :deadline, :message)
+        params.require(:offer).permit(:rate, :deadline, :message, :tasker_id)
     end
 end
