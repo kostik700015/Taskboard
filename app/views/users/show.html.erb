@@ -1,15 +1,28 @@
-<h1>Profile</h1>
-<div class="container d-flex justify-content-center">
-    <div class="card mb-15 " style="width: 70%;">
-        <p>Rating: <%=@user.score%></p>
-        <p>Reviews <%=@user.score%></p>
-        <p>Balance: <%=@user.balance%></p>
-        <div class="text-left"> 
-        <%= render 'user_tasks'%>
-            <%= link_to "Completed tasks history:",  user_path, class:"btn btn-outline-info mx-auto" %>
-            <%= link_to "Current tasks:", new_task_path, class:"btn btn-outline-info mx-auto" %>
-            <%= link_to "Create new task", new_task_path, class:"btn btn-info mx-auto" %>
-            <%= link_to "Settings", edit_user_password_path, class:"btn btn-info mx-auto" %>
+<div class="container">
+  <h1 class="text-center">Profile</h1>
+  <div class="row justify-content-center">
+    <% if current_user.role == 'client'%>
+      <div class="mb-15 " style="width: 70%;">
+        <p>Rating: <%=Client.find_by(user_id: current_user.id).score%></p>
+        <p>Balance: <%=Client.find_by(user_id: current_user.id).balance%></p>
+        <p>Reviews: <%=Client.find_by(user_id: current_user.id).score%></p>
+        <div class="text-left">
+          <%= link_to "Completed tasks", client_tasks_path(client_id: current_user.clients.first, tasks: Task.all.where(is_completed: true)), class:"btn btn-outline-info mx-auto" %>
+          <%= link_to "Current tasks", client_tasks_path(client_id: current_user.clients.first, tasks: Task.all.where(is_assigned: false)), class:"btn btn-outline-info mx-auto" %>
+          <%= link_to "Settings", edit_user_password_path, class:"btn btn-info mx-auto" %>
         </div>
-    </div>
+      </div>
+    <% elsif current_user.role == 'tasker' %>
+      <div class="card mb-15 " style="width: 70%;">
+        <p>Rating: <%=Tasker.find_by(user_id: current_user.id).score%></p>
+        <p>Balance: <%=Tasker.find_by(user_id: current_user.id).balance%></p>
+        <p>Reviews: <%=Tasker.find_by(user_id: current_user.id).score%></p>
+        <div class="text-left"> 
+          <%= link_to "Completed tasks",  user_path, class:"btn btn-outline-info mx-auto" %>
+          <%= link_to "Current tasks", user_path, class:"btn btn-outline-info mx-auto" %>
+          <%= link_to "Settings", edit_user_password_path, class:"btn btn-info mx-auto" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,0 +1,17 @@
+
+<%= form_with url: task_offers_path(task_id: task.id), method: :post do |f| %>
+  <p>Rate<br>
+    <%= f.text_field :rate %>
+  </p>
+  <p>
+    Deadline<br>
+    <%= f.text_field :deadline %>
+  </p>
+  <p>
+    Message<br>
+    <%= f.text_area :message %>
+  </p>
+  <p>
+    <%= f.submit 'Make offer'%>
+  </p>
+<% end %>

@@ -1,13 +1,13 @@
-<p>current tasks</p>
+<p>Current tasks</p>
 <div class="d-flex flex-wrap">
-    <% @user.tasks.each do |task|  %>
-        <div class="card mb-5 mx-3" style="width: 20rem;">
-            <img class="card-img-top mx-3" src="..." alt="Card image cap">
-            <div class="card-body ">
-                <h5 class="card-title text-center"><%= task.title %></h5>
-                <p class="card-text"><span class="text-limited"><%= task.description%></span></p>
-                <%= link_to "Show details", task, class:"btn btn-info btn-color" %>
-            </div>
-        </div>
-    <% end %>
+  <% @user.tasks.each do |task| %>
+    <div class="card mb-5 mx-3" style="width: 20rem;">
+      <img class="card-img-top mx-3" src="..." alt="Card image cap">
+      <div class="card-body ">
+        <h5 class="card-title text-center"><%= task.title %></h5>
+        <p class="card-text"><span class="text-limited"><%= task.description%></span></p>
+        <%= link_to "Show details", task, class:"btn btn-info btn-color" %>
+      </div>
+    </div>
+  <% end %>
 </div>

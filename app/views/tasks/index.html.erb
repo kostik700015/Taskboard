@@ -1,23 +1,19 @@
-
-
 <div class="container">
-    <h1>TASKS</h1>
-    <div class="d-flex flex-wrap">
-
-
+  <h1>TASKS</h1>
+  <div class="d-flex flex-wrap">
     <% @tasks.each do |task|  %>
-        <% if !task.is_assigned%>
-            <div class="card mb-5 mx-3" style="width: 20rem;">
-                <img class="card-img-top mx-3" src="..." alt="Card image cap">
-                <div class="card-body ">
-                    <h5 class="card-title text-center"><%= task.title %></h5>
-                    <p class="card-text"><span class="text-limited"><%= task.description%></span></p>
-                    <%= link_to "Show details", task, class:"btn btn-info btn-color" %>
-                </div>
-            </div>
-        <% end %>
+      <% if !task.is_assigned%>
+        <div class="card mb-5 mx-3" style="width: 20rem;">
+          <img class="card-img-top mx-auto" style="width:200px; display: block;" src="/label.jpeg" alt="Card image cap">
+          <div class="card-body ">
+            <h5 class="card-title text-center"><%= task.title %></h5>
+            <p class="card-text"><span class="text-limited"><%= task.description%></span></p>
+            <%= link_to "Show details", task, class:"btn btn-info btn-color" %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-</div>
+  </div>
 </div>
 
 

@@ -1,14 +1,45 @@
+<div class="container text-center">
 
+  <h1>TaskBoard</h1>
+  <% if current_user %>
 
-<h1>TaskBoard</h1>
+  <button id="client_btn" class="btn btn-success mx-2">Client</button>
+  <button id="tasker_btn" class="btn btn-success mx-2">Tasker</button>
 
+  <div id='client' class='client m-4'>
+    <%= form_with url: clients_path(user_id: current_user.id, role: 'client') do |f| %>
+      <p>Username<br>
+        <%= f.text_field :username %>
+      </p>
+      <p>Balance<br>
+        <%= f.text_field :balance %>
+      </p>
+      <p>
+        <%= f.submit class:"btn btn-outline-success"%>
+      </p>
+    <% end %>
+  </div>
+  <div id='tasker' class='tasker m-4'>
+    <%= form_with url: taskers_path(user_id: current_user.id, role: 'tasker') do |f| %>
+      <p>Username<br>
+        <%= f.text_field :username %>
+      </p>
+      <p>Choose one primary skill<br>
+        <%= check_box_tag 'skills[]', 'skill 1' %>
+        <%= f.label :skills, 'Skill 1' %>
+        <%= check_box_tag 'skills[]', 'skill 2' %>
+        <%= f.label :skills, 'Skill 2' %>
+      </p>
+      <p>
+        <%= f.submit class:"btn btn-outline-success"%>
+      </p>
+    <% end %>
+  </div>
 
-<% if current_user %>
-<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-<% else %>
-<%= link_to 'Sign up', new_user_registration_path %>
+  <% else %>
+    <%= link_to 'Sign up', new_user_registration_path %>
 
-<%= link_to 'Sign in', new_user_session_path %>
-<%end%>
+    <%= link_to 'Sign in', new_user_session_path %>
+  <%end%>
 
-
+</div>

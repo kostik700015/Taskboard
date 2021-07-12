@@ -26,12 +26,12 @@
 
           <%end%>  
 
-          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"btn btn-outline-primary" %>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:"btn btn-outline-info" %>
         <% else %>
         
           
-          <%= link_to 'Sign up', new_user_registration_path, class:"btn btn-outline-primary" %>
-          <%= link_to 'Sign in', new_user_session_path, class:"btn btn-outline-primary" %>
+          <%= link_to 'Sign up', new_user_registration_path, class:"btn btn-outline-info" %>
+          <%= link_to 'Sign in', new_user_session_path, class:"btn btn-outline-info" %>
         <%end%>
       </nav>
     </div>

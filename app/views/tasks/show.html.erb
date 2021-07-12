@@ -1,43 +1,43 @@
-
-
-<div class="container d-flex justify-content-center">
-    <div class="card mb-15 " style="width: 70%;">
-        <img class="card-img-top " src="..." alt="Card image cap">
-        <div class="card-body">
-            <h1>Title: <%= @task.title %></h1>
-            <p>Description: <%= @task.description%></p>
-            <p>Rate: <%= @task.rate%></p>
-            <p>Deadline: <%= @task.deadline%></p>
-            <p>Client: <%= Client.find(@task.client_tasker_id).username%></p>
-            <%= link_to "Make offer",  class:"btn btn-outline-info mx-auto" %>
-        </div>
-        
+<div class="container d-flex flex-wrap justify-content-center">
+  <div class="row d-flex justify-content-around">
+    <div class="col-8 pl-2 mx-auto">
+      <img class="card-img-top mx-auto" style="width:200px; display: block;" src="/label.jpeg" alt="Card image cap">
+      <div class="card-body">
+        <h1>Title: <%= @task.title %></h1>
+        <p>Description: <%= @task.description%></p>
+        <p>Rate: <%= @task.rate%></p>
+        <p>Deadline: <%= @task.deadline%></p>
+        <p>Client: <%= Client.find(@task.client_tasker_id).username%></p>
+      </div>
     </div>
-    <div class="mx-auto">
+
+    <% if current_user.role == 'tasker'%>
+      <div class="col-4 mx-auto">
         <h2>Adding new offer</h2>
-        <%= form_for [@task, @task.offers.create(tasker_id: @tasker.id)]  do |f| %>
-            <p>Rate<br>
-                <%= f.text_field :rate %>
-            </p>
-            <p>
-                Deadline<br>
-                <%= f.text_field :deadline %>
-            </p>
-            <p>
-                Message<br>
-                <%= f.text_area :message %>
-            </p>
-
-            <p>
-                <%= f.submit 'Make offer'%>
-            </p>
-        <% end %>
-    </div>
-
+        <%= render partial: "offers/form", locals: {task: @task}%>
+      </div>
+    <%end %>
+  </div>
+  
+  
+  <div class="row justify-content-center mx-5">
     <div id= "offers">
-        <% if @task.offers.present?%>
+      <% if @task.offers.present? %>
         <h1>Offers</h1> 
-        <%end %>
-        <%= render  @task.offers, tasker: @tasker %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Tasker</th>
+              <th scope="col">Rate</th>
+              <th scope="col">Deadline</th>
+              <th scope="col">Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @task.offers, tasker: @tasker, client: @client %>
+          </tbody>
+        </table>
+      <%end %>
     </div>
+  </div>
 </div>

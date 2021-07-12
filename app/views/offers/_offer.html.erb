@@ -1,7 +1,15 @@
-<div>
-    <strong><%= tasker.username %> says:</strong>
-    <%= offer.rate %>
-    <%= offer.deadline %>
-    <%= offer.message %>
-    
-</div>
+<% if !client.nil? %>
+  <tr>
+    <td><%= Tasker.find(offer.tasker_id).username %></td>
+    <td><%= offer.rate %></td>
+    <td><%= offer.deadline %>e</td>
+    <td><%= offer.message %></td>
+  </tr>
+<% elsif (!offer.tasker_id.nil?) && (offer.tasker_id == tasker.id) %>
+  <tr>
+    <td><%= Tasker.find(offer.tasker_id).username %></td>
+    <td><%= offer.rate %></td>
+    <td><%= offer.deadline %>e</td>
+    <td><%= offer.message %></td>
+  </tr>
+<%end %>
