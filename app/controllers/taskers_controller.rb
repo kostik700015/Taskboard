@@ -4,11 +4,10 @@ class TaskersController < ApplicationController
     end
 
     def create
-      byebug
+      #byebug
       @user = current_user
       @user.update(role: params[:role])
       @tasker = Tasker.new(tasker_params)
-      # @tasker = Tasker.new(username: params[:username], user_id: params[:user_id])
       @tasker.skills.replace(params[:skills])
       if @tasker.save
         redirect_to tasks_path
@@ -18,7 +17,11 @@ class TaskersController < ApplicationController
     end
 
     def show
-      @tasker = Tasker.find(params[:id])
+      if Tasker.find_by(id: params[:id])
+        @tasker = Tasker.find(params[:id])
+      else 
+        flash.notice = "Tasker is not found."
+      end
     end
 
     private 

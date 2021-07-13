@@ -5,14 +5,18 @@ class OffersController < ApplicationController
   end
 
   def create  
-    byebug     
+    # byebug     
     @task = Task.find(params[:task_id])    
     @tasker = Tasker.find_by(user_id: current_user.id)
     @client = Client.find_by(user_id: current_user.id)
     @offer = @task.offers.new(rate: params[:rate], deadline: params[:deadline], message: params[:message], tasker_id: @tasker.id)
 
-    @offer.save
-    redirect_to task_path(@task)
+    if @offer.save
+      flash.notice = "The offer was created successfully."
+      redirect_to task_path(@task)
+    else 
+      flash.now.alert = @offer.errors.full_messages.to_sentence
+    end
   end
   # def edit 
   #   @offer = Offer.find(params[:id])

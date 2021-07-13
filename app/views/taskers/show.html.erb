@@ -1,18 +1,17 @@
 
 <div class="container d-flex justify-content-center">
-    <div class="card mb-15 " style="width: 22rem;">
-        <img class="card-img-top " src="..." alt="Card image cap">
-       
-            <div class="card-body">
-                <h1> <%= @tasker.username %></h1>
-                <p>Score: <%= @tasker.score%></p>
-                <p>Score: <%= @tasker.about%></p>
-                <p>My skills: </p>
-                  <ul class="card-text">
-                    <% @tasker.skills.each do |skill|%>
-                        <li><%= skill %></li>
-                    <% end %>
-                </ul> 
-            </div>
+  <div class="card mb-15 " style="width: 22rem;">
+    <img class="card-img-top " src="..." alt="Card image cap">
+    <div class="card-body">
+      <h1> <%= @tasker.username %></h1>
+      <p>Score: <%= @tasker.score%></p>
+      <p>Score: <%= @tasker.about%></p>
+      <p>My skills: </p>
+        <ul class="card-text">
+        <% @tasker.skills.each do |skill|%>
+          <li><%= skill %></li>
+        <% end %>
+      </ul> 
     </div>
+  </div>
 </div>

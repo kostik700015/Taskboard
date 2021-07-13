@@ -1,4 +1,4 @@
-<div class="container d-flex flex-wrap justify-content-center">
+<div class="container d-flex flex-wrap justify-content-between">
   <div class="row d-flex justify-content-around">
     <div class="col-8 pl-2 mx-auto">
       <img class="card-img-top mx-auto" style="width:200px; display: block;" src="/label.jpeg" alt="Card image cap">
@@ -7,7 +7,11 @@
         <p>Description: <%= @task.description%></p>
         <p>Rate: <%= @task.rate%></p>
         <p>Deadline: <%= @task.deadline%></p>
-        <p>Client: <%= Client.find(@task.client_tasker_id).username%></p>
+        <% if current_user.role == 'client' %>
+          <p>Client:  <%= @client.username %></p>
+        <% else %>
+          <p>Client: <%= link_to @client.username, client_path(@client), class:"p-2 text-info" %></p>
+        <% end %>
       </div>
     </div>
 
@@ -19,8 +23,7 @@
     <%end %>
   </div>
   
-  
-  <div class="row justify-content-center mx-5">
+  <div class="row d-flex justify-content-start mx-2">
     <div id= "offers">
       <% if @task.offers.present? %>
         <h1>Offers</h1> 
@@ -31,6 +34,7 @@
               <th scope="col">Rate</th>
               <th scope="col">Deadline</th>
               <th scope="col">Message</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>

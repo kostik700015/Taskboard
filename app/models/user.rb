@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :taskers
-  has_many :clients
+  has_many :taskers, dependent: :destroy 
+  has_many :clients, dependent: :destroy 
 
   def index
   

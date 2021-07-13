@@ -1,13 +1,14 @@
-<% if !client.nil? %>
+<% if current_user.role == 'client'%>
   <tr>
-    <td><%= Tasker.find(offer.tasker_id).username %></td>
+    <td><%= link_to @tasker.username, tasker_path(@tasker), class:"p-2 text-info" %></td>
     <td><%= offer.rate %></td>
-    <td><%= offer.deadline %>e</td>
+    <td><%= offer.deadline %></td>
     <td><%= offer.message %></td>
+    <td><%= link_to 'Accept', tasks_path, class:"btn btn-sm btn-info" %></td>
   </tr>
-<% elsif (!offer.tasker_id.nil?) && (offer.tasker_id == tasker.id) %>
+<% else %>
   <tr>
-    <td><%= Tasker.find(offer.tasker_id).username %></td>
+    <td><%=  @tasker.username %></td>
     <td><%= offer.rate %></td>
     <td><%= offer.deadline %>e</td>
     <td><%= offer.message %></td>

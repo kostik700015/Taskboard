@@ -9,18 +9,25 @@ class TasksController < ApplicationController
   end
 
   def create
-    byebug
+    #byebug
     @client = Client.find_by(user_id: current_user.id)
     @task = @client.tasks.new(task_params)
     # @task = Task.new(task_params)
-    @task.save
+    if @task.save
+      flash.notice = "The task was created successfully."
+      redirect_to task_path(@task)
+    else 
+      flash.now.alert = @task.errors.full_messages.to_sentence
+    end
+
   end
 
   def show
     # byebug
     @task = Task.find(params[:id])
-    @tasker = Tasker.find_by(user_id: current_user.id)
-    @client = Client.find_by(user_id: current_user.id)
+    @offer = Offer.find_by(task_id: @task.id)
+    @tasker = Tasker.find(@offer.tasker_id)
+    @client = Client.find(@task.client_tasker_id)
     # @offer = @task.offers.new()
   end
 

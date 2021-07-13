@@ -17,6 +17,7 @@ class ClientsController < ApplicationController
   end
 
   def show
+    #byebug
     @client = Client.find(params[:id])
   end
 

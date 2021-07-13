@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_001550) do
+ActiveRecord::Schema.define(version: 2021_07_12_002545) do
 
   create_table "clients", force: :cascade do |t|
     t.string "username"
@@ -60,8 +60,6 @@ ActiveRecord::Schema.define(version: 2021_07_12_001550) do
     t.string "user_type"
     t.integer "client_tasker_id"
     t.string "client_tasker_type"
-    t.index ["client_id"], name: "index_tasks_on_client_id"
-    t.index ["tasker_id"], name: "index_tasks_on_tasker_id"
   end
 
   create_table "users", force: :cascade do |t|

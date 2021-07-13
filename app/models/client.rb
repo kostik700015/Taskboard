@@ -1,3 +1,3 @@
 class Client < ApplicationRecord
-  has_many :tasks, as: :client_tasker
+  has_many :tasks, as: :client_tasker, dependent: :destroy 
 end
