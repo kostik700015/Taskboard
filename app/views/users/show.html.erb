@@ -3,7 +3,8 @@
   <div class="row justify-content-center">
     <% if current_user.role == 'client'%>
       <div class="mb-15 " style="width: 70%;">
-        <p>User: <%= current_user.email%></p>
+        <p>Name: <%= @user.username%></p>
+        <p>Email: <%= current_user.email%></p>
         <p>Rating: <%=Client.find_by(user_id: current_user.id).score%></p>
         <p>Balance: <%=Client.find_by(user_id: current_user.id).balance%></p>
         <p>Reviews: <%=Client.find_by(user_id: current_user.id).score%></p>
@@ -15,7 +16,8 @@
       </div>
     <% elsif current_user.role == 'tasker' %>
       <div class="card mb-15 " style="width: 70%;">
-      <p>User: <%=  current_user.email %></p>
+      <p>Name: <%= user.username%></p>
+      <p>Email: <%=  current_user.email %></p>
         <p>Rating: <%=Tasker.find_by(user_id: current_user.id).score%></p>
         <p>Balance: <%=Tasker.find_by(user_id: current_user.id).balance%></p>
         <p>Reviews: <%=Tasker.find_by(user_id: current_user.id).score%></p>

@@ -26,14 +26,16 @@ class TasksController < ApplicationController
     # byebug
     @task = Task.find(params[:id])
     @offer = Offer.find_by(task_id: @task.id)
-    @tasker = Tasker.find(@offer.tasker_id)
+    if @offer
+      @tasker = Tasker.find(@offer.tasker_id)
+    end
     @client = Client.find(@task.client_tasker_id)
     # @offer = @task.offers.new()
   end
 
   private 
   def task_params
-    params.require(:task).permit(:title, :description, :rate)
+    params.require(:task).permit(:title, :description, :deadline, :rate)
   end
   # def offer_params
   #   params.require(:offer).permit(:rate, :deadline, :message)
