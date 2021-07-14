@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :taskers, dependent: :destroy 
   has_many :clients, dependent: :destroy 
 
-  def index
-  
-  end
+  validates :email, presence: true
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+   
 end

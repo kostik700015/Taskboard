@@ -24,7 +24,10 @@
       <p>Username<br>
         <%= f.text_field :username %>
       </p>
-      <p>Choose one primary skill<br>
+      <p>About<br>
+        <%= f.text_field :about %>
+      </p>
+      <p>Choose at least one primary skill<br>
         <%= check_box_tag 'skills[]', 'skill 1' %>
         <%= f.label :skills, 'Skill 1' %>
         <%= check_box_tag 'skills[]', 'skill 2' %>

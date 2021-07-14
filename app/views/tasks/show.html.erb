@@ -1,6 +1,10 @@
 <div class="container d-flex flex-wrap justify-content-between">
   <div class="row d-flex justify-content-around">
-    <div class="col-8 pl-2 mx-auto">
+    <% if current_user.role == 'client'%>
+      <div class="col pl-2 mx-auto">
+    <% else %>  
+      <div class="col-8 pl-2 mx-auto">
+    <% end %>
       <img class="card-img-top mx-auto" style="width:200px; display: block;" src="/label.jpeg" alt="Card image cap">
       <div class="card-body">
         <h1>Title: <%= @task.title %></h1>
@@ -12,6 +16,8 @@
         <% else %>
           <p>Client: <%= link_to @client.username, client_path(@client), class:"p-2 text-info" %></p>
         <% end %>
+        <%= link_to 'Edit', edit_task_path,  class:"btn btn-outline-info" %>
+        <%= link_to 'Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-info" %>
       </div>
     </div>
 
@@ -22,7 +28,7 @@
       </div>
     <%end %>
   </div>
-  
+
   <div class="row d-flex justify-content-start mx-2">
     <div id= "offers">
       <% if @task.offers.present? %>
@@ -38,7 +44,7 @@
             </tr>
           </thead>
           <tbody>
-            <%= render @task.offers, tasker: @tasker, client: @client %>
+            <%= render @task.offers, tasker: @tasker, client: @client, task: @task  %>
           </tbody>
         </table>
       <%end %>

@@ -10,16 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_002545) do
+ActiveRecord::Schema.define(version: 2021_07_14_030454) do
 
   create_table "clients", force: :cascade do |t|
     t.string "username"
-    t.float "score"
-    t.float "balance"
+    t.float "score", default: 0.0
+    t.float "balance", default: 0.0
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.string "name"
+    t.integer "offer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_comments_on_offer_id"
   end
 
   create_table "offers", force: :cascade do |t|

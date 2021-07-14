@@ -10,9 +10,10 @@ class TaskersController < ApplicationController
       @tasker = Tasker.new(tasker_params)
       @tasker.skills.replace(params[:skills])
       if @tasker.save
+        flash.notice = "The tasker was created successfully."
         redirect_to tasks_path
       else
-        redirect_to root_path, notice: 'Try again.'
+        redirect_to root_path
       end
     end
 
