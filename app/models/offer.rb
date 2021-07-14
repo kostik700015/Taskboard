@@ -3,6 +3,5 @@ class Offer < ApplicationRecord
   belongs_to :tasker
   has_many :comments, dependent: :destroy
   
-  validates :deadline, :rate, :message, presence: true
- 
+  validates :deadline, :rate, :message, presence: true 
 end
