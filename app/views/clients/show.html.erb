@@ -1,9 +1,43 @@
 <div class="container d-flex justify-content-center">
   <div class="card mb-15 " style="width: 22rem;">
-    <img class="card-img-top " src="..." alt="Card image cap">
+    <div id="map" style='width: 22rem; height: 300px;'></div> 
+     
     <div class="card-body">
+      <p>Latitude: <span id="lat"><%=@client.latitude%></span></p>
+      <p>Longitude: <span id="lon"><%=@client.longitude%></span></p>
       <h1> <%= @client.username %></h1>
-      <p>Score: <%= @client.score%></p>
+      <p>Score: 4.5<%= @client.score%></p>
+     
     </div>
   </div>
 </div>
+
+
+
+<script type="text/javascript">  
+  const latitude = document.getElementById("lat").lastChild.textContent.replace(/\s/g,'');
+  const longitude = document.getElementById("lon").lastChild.textContent.replace(/\s/g,'');
+  console.log(latitude)
+  handler = Gmaps.build('Google');  
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){ 
+    
+    markers = handler.addMarkers([  
+      {  
+        "map_options": {
+      "auto_zoom": false, 
+      "zoom": 1}, 
+        "lat": latitude,  
+        "lng": longitude,  
+        "picture": {  
+          "width":  32,  
+          "height": 32  
+        },  
+        // "auto_zoom": false,
+        // "zoom": 1,
+        "infowindow": "SJSU"  
+      }  
+    ]);  
+    handler.bounds.extendWith(markers);  
+    handler.fitMapToBounds();  
+  });  
+</script>
