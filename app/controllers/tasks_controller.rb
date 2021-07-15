@@ -28,6 +28,7 @@ class TasksController < ApplicationController
     @tasker = Tasker.find(@offer.tasker_id)
     @task.update(tasker_id: @tasker.id, is_assigned: true)
     redirect_to task_path(@task)
+    flash.notice = "The task was assigned successfully."
   end
 
   def show

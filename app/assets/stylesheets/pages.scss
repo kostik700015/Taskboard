@@ -2,6 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .taskboard {
-    font-family: 'Archivo Black', sans-serif;
-    color: rgb(20, 185, 70)
+  font-family: 'Archivo Black', sans-serif;
+  color: rgb(20, 185, 70);
+}
+
+body {
+  // background-image: url("/background.jpg");
+  // background: linear-gradient(to right, rgba(255,255,255,0.5), rgba(255,255,255,0.5));
+  background: linear-gradient(to right, rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("/background.jpg") no-repeat center;
+
+  margin: 0;
+  // background-position: center;
+  // background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 1200px;
+  z-index: 1;
 }

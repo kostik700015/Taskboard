@@ -11,8 +11,11 @@
       <p>Username<br>
         <%= f.text_field :username %>
       </p>
-      <p>Balance<br>
-        <%= f.text_field :balance %>
+       <p>Latitude<br>
+        <%= f.text_field :latitude %>
+      </p>
+       <p>Longitude<br>
+        <%= f.text_field :longitude %>
       </p>
       <p>
         <%= f.submit class:"btn btn-outline-success"%>
@@ -26,6 +29,12 @@
       </p>
       <p>About<br>
         <%= f.text_field :about %>
+      </p>
+       <p>Latitude<br>
+        <%= f.text_field :latitude %>
+      </p>
+       <p>Longitude<br>
+        <%= f.text_field :longitude %>
       </p>
       <p>Choose at least one primary skill<br>
         <%= check_box_tag 'skills[]', 'skill 1' %>

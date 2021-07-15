@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    #byebug
     @user = User.find(current_user.id)
     #temporary users
     if client = Client.find_by(user_id: @user.id)
