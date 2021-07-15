@@ -1,4 +1,4 @@
-<% if current_user.role == 'client'%>
+<% if current_user.role == 'client' && !@tasker.nil?%>
   <tr>
     <td><%= link_to @tasker.username, tasker_path(@tasker), class:"p-2 text-info" %></td>
     <td><%= offer.rate %></td>
@@ -7,42 +7,44 @@
       <%= offer.message %> 
       <% offer.comments.each do |comment| %>
         <div>
-          <strong> <%= client.username %>: </strong>
+          <strong> <%= comment.name %>: </strong>
           <%= comment.content %>
         </div>
       <%end%>
-      <%= form_with url: task_offer_comments_path(offer_id: offer.id, task_id: task.id), method: :post do |f| %>
+      <%= form_with url: task_offer_comments_path(offer_id: offer.id, task_id: task.id, name: client.username), method: :post do |f| %>
         <div class="field">
           <%=f.text_area :content %>
         </div>
         <div class="actions"> 
-        <%= f.submit %>
+        <%= f.submit "Send" %>
         </div> 
       <% end %>
     </td>
     <td><%= link_to 'Accept', assign_tasker_path(id: task.id), class:"btn btn-sm btn-info" %></td>
   </tr>
-<% else %>
+<% elsif !@tasker.nil? %>
   <tr>
-    <td><%=  @tasker.username %></td>
-    <td><%= offer.rate %></td>
-    <td><%= offer.deadline %></td>
-    <td>
-      <%= offer.message %> 
-      <% offer.comments.each do |comment| %>
-        <div>
-          <strong> <%= tasker.username %>: </strong>
-          <%= comment.content %>
-        </div>
-      <%end%>
-      <%= form_with url: task_offer_comments_path(offer_id: offer.id, task_id: task.id), method: :post do |f| %>
-        <div class="field">
-          <%=f.text_area :content %>
-        </div>
-        <div class="actions"> 
-        <%= f.submit %>
-        </div> 
-      <% end %>
-    </td>
+    <% if offer.tasker == @tasker%>
+      <td><%=  @tasker.username %></td>
+      <td><%= offer.rate %></td>
+      <td><%= offer.deadline %></td>
+      <td>
+        <%= offer.message %> 
+        <% offer.comments.each do |comment| %>
+          <div>
+            <strong> <%= comment.name %>: </strong>
+            <%= comment.content %>
+          </div>
+        <%end%>
+        <%= form_with url: task_offer_comments_path(offer_id: offer.id, task_id: task.id, name: tasker.username), method: :post do |f| %>
+          <div class="field">
+            <%=f.text_area :content %>
+          </div>
+          <div class="actions"> 
+          <%= f.submit "Send"%>
+          </div> 
+        <% end %>
+      </td>
+    <%end%>
   </tr>
 <%end %>

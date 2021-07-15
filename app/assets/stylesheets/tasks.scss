@@ -2,10 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .text-limited{
-    display:block;
-    text-overflow: ellipsis;
-    width: 300px;
-    overflow: hidden; 
-    white-space: nowrap;
+  display:block;
+  text-overflow: ellipsis;
+  // width: 300px;
+  overflow: hidden; 
+  white-space: nowrap;
+}
+
+.task-progress {
+  border-top-style: solid;
+  // border-top-color: rgb(98, 164, 184);
+  border-width: 5px 0 0 0;
 }
 

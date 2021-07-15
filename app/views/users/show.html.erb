@@ -1,31 +1,31 @@
 <div class="container">
   <h1 class="text-center">Profile</h1>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center m-2">
     <% if current_user.role == 'client'%>
-      <div class="mb-15 " style="width: 70%;">
-        <p>Name: <%= @user.username%></p>
-        <p>Email: <%= current_user.email%></p>
-        <p>Rating: <%=Client.find_by(user_id: current_user.id).score%></p>
-        <p>Balance: <%=Client.find_by(user_id: current_user.id).balance%></p>
-        <p>Reviews:</p>
+      <div class="mb-15 p-5" style="width: 70%;">
+        <p><strong>Name: </strong><%= @user.username%></p>
+        <p><strong>Email: </strong><%= current_user.email%></p>
+        <p><strong>Rating: </strong><%=Client.find_by(user_id: current_user.id).score%></p>
+        <p><strong>Balance: </strong><%=Client.find_by(user_id: current_user.id).balance%></p>
+        <p><strong>Reviews:</strong></p>
         <div class="text-left">
           <%= link_to "Completed tasks", client_tasks_path(client_id: current_user.clients.first, tasks: Task.all.where(is_completed: true)), class:"btn btn-outline-info mx-auto" %>
           <%= link_to "Current tasks", client_tasks_path(client_id: current_user.clients.first, tasks: Task.all.where(is_assigned: true, is_completed: false)), class:"btn btn-outline-info mx-auto" %>
-          <%= link_to "Settings", edit_user_password_path, class:"btn btn-info mx-auto" %>
+          <%= link_to "Settings", edit_user_password_path, class:"btn btn-outline-info mx-auto" %>
         </div>
       </div>
     <% elsif current_user.role == 'tasker' %>
-      <div class="card mb-15 " style="width: 70%;">
-      <p>Name: <%= @user.username%></p>
-      <p>Email: <%=  current_user.email %></p>
-      <p>About: <%=  @user.about %></p>
-        <p>Rating: 0.0<%=Tasker.find_by(user_id: current_user.id).score%></p>
-        <p>Balance: 0.0<%=Tasker.find_by(user_id: current_user.id).balance%></p>
-        <p>Reviews: </p>
+      <div class="card mb-15 p-5" style="width: 70%;">
+      <p><strong>Name: </strong><%= @user.username%></p>
+      <p><strong>Email: </strong><%=  current_user.email %></p>
+      <p><strong>About: </strong><%=  @user.about %></p>
+        <p><strong>Rating: </strong>0.0<%=Tasker.find_by(user_id: current_user.id).score%></p>
+        <p><strong>Balance: </strong>0.0<%=Tasker.find_by(user_id: current_user.id).balance%></p>
+        <p><strong>Reviews: </strong></p>
         <div class="text-left"> 
           <%= link_to "Completed tasks",  tasks_path, class:"btn btn-outline-info mx-auto" %>
           <%= link_to "Current tasks", user_path, class:"btn btn-outline-info mx-auto" %>
-          <%= link_to "Settings", edit_user_password_path, class:"btn btn-info mx-auto" %>
+          <%= link_to "Settings", edit_user_password_path, class:"btn btn-outline-info mx-auto" %>
         </div>
       </div>
     <% end %> 

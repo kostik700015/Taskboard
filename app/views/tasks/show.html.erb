@@ -6,14 +6,21 @@
       <div class="col-8 pl-2 mx-auto">
     <% end %>
       <div class="card mb-5 mx-3">
-      <img class="card-img-top mx-auto" style="width:200px; display: block;" src="/task-logo.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h1>Title: <%= @task.title %></h1>
-        <p>Description: <%= @task.description%></p>
-        <p>Rate: <%= @task.rate%></p>
-        <p>Deadline: <%= @task.deadline%></p>
+      <% if !@task.is_assigned%>
+        <div class="task-progress" style="border-top-color: rgb(98, 164, 184);"></div>
+      <% else %>
+        <div class="task-progress" style="border-top-color: rgb(96, 185, 130);"></div>
+      <% end %>
+      <div class="d-flex flex-row justify-content-beetween">
+        <img class="mt-2" style="width:150px; display: block;" src="/task-logo.jpg" alt="Card image cap">
+         <h1 class="card-title text-info d-flex align-items-center mr-5"><%= @task.title %></h1>
+      </div>
+      <div class="card-body mx-4 mb-2">
+        <p><strong>Description: </strong><%= @task.description%></p>
+        <p><strong>Rate: </strong><%= @task.rate%></p>
+        <p><strong>Deadline: </strong><%= @task.deadline%></p>
         <% if current_user.role == 'client' %>
-          <p>Client:  <%= @client.username %></p>
+          <p><strong>Client: </strong> <%= @client.username %></p>
           <%= link_to 'Edit', edit_task_path,  class:"btn btn-outline-info" %>
           <%= link_to 'Destroy', @task, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-info" %>
         <% else %>
@@ -35,7 +42,7 @@
     <div id= "offers">
       <% if @task.offers.present? %>
         <h1>Offers</h1> 
-        <table class="table">
+        <table class="table table-hover table-active ">
           <thead>
             <tr>
               <th scope="col">Tasker</th>

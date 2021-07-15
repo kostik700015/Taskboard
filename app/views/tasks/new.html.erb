@@ -24,14 +24,15 @@
       Rate<br>
       <%= f.text_field :rate %>
     </p>
+    <p> 
      Deadline<br>
       <%= f.text_field :deadline %>
     </p>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit class:"btn btn-sm btn-info"%>
     </div>
   <% end %>
 
-  <%= link_to 'Back', tasks_path %>
+  <%= link_to 'Back', tasks_path, class:"text-info" %>
 </div>

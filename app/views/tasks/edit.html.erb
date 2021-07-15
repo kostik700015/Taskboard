@@ -1,42 +1,40 @@
-<h1>Editing Task</h1>
+<div class="container">
+  <h1>Editing Task</h1>
+  <%= form_for(@task) do |f| %>
+    <% if @task.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-<%= form_for(@task) do |f| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+        <ul>
+        <% @task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-      <% @task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <p><strong>
+      Title</strong><br>
+      <%= f.text_field :title %>
+    </p>
+    <p><strong> 
+      Description</strong><br>
+      <%= f.text_field :description %>
+    </p>
+    <p><strong> 
+      Rate</strong><br>
+      <%= f.text_field :rate %>
+    </p>
+    <p><strong> 
+     Deadline</strong><br>
+      <%= f.text_field :deadline %>
+    </p>
+
+    <div class="actions">
+      <%= f.submit class:"btn btn-sm btn-info" %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :rate %>
-    <%= f.text_field :rate %>
-  </div>
-
-  <div class="field">
-    <%= f.label :deadline %>
-    <%= f.text_field :deadline %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+  <%= link_to 'Show', @task, class:"text-info" %> |
+  <%= link_to 'Back', task_path, class:"text-info" %>
+</div>

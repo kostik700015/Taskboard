@@ -33,12 +33,22 @@ class TasksController < ApplicationController
 
   def show
     # byebug
+    # @offer = Offer.find_by(task_id: @task.id)
+    # if @offer
+    #   @tasker = Tasker.find(@offer.tasker_id)
+    # end
+    # @client = Client.find(@task.client_tasker_id)
+
     @offer = Offer.find_by(task_id: @task.id)
-    if @offer
+    # if @offer
+    #   @tasker = Tasker.find(@offer.tasker_id)
+    # end
+    if current_user.taskers.first
+      @tasker = current_user.taskers.first
+    elsif @offer
       @tasker = Tasker.find(@offer.tasker_id)
     end
     @client = Client.find(@task.client_tasker_id)
-    # @offer = @task.offers.new()
   end
 
   def edit
