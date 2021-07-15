@@ -7,10 +7,10 @@
         <p>Email: <%= current_user.email%></p>
         <p>Rating: <%=Client.find_by(user_id: current_user.id).score%></p>
         <p>Balance: <%=Client.find_by(user_id: current_user.id).balance%></p>
-        <p>Reviews: <%=Client.find_by(user_id: current_user.id).score%></p>
+        <p>Reviews:</p>
         <div class="text-left">
           <%= link_to "Completed tasks", client_tasks_path(client_id: current_user.clients.first, tasks: Task.all.where(is_completed: true)), class:"btn btn-outline-info mx-auto" %>
-          <%= link_to "Current tasks", client_tasks_path(client_id: current_user.clients.first, tasks: Task.all.where(is_assigned: false)), class:"btn btn-outline-info mx-auto" %>
+          <%= link_to "Current tasks", client_tasks_path(client_id: current_user.clients.first, tasks: Task.all.where(is_assigned: true, is_completed: false)), class:"btn btn-outline-info mx-auto" %>
           <%= link_to "Settings", edit_user_password_path, class:"btn btn-info mx-auto" %>
         </div>
       </div>
@@ -19,9 +19,9 @@
       <p>Name: <%= @user.username%></p>
       <p>Email: <%=  current_user.email %></p>
       <p>About: <%=  @user.about %></p>
-        <p>Rating: <%=Tasker.find_by(user_id: current_user.id).score%></p>
-        <p>Balance: <%=Tasker.find_by(user_id: current_user.id).balance%></p>
-        <p>Reviews: <%=Tasker.find_by(user_id: current_user.id).score%></p>
+        <p>Rating: 0.0<%=Tasker.find_by(user_id: current_user.id).score%></p>
+        <p>Balance: 0.0<%=Tasker.find_by(user_id: current_user.id).balance%></p>
+        <p>Reviews: </p>
         <div class="text-left"> 
           <%= link_to "Completed tasks",  tasks_path, class:"btn btn-outline-info mx-auto" %>
           <%= link_to "Current tasks", user_path, class:"btn btn-outline-info mx-auto" %>

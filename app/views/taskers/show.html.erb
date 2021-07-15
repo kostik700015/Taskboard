@@ -3,8 +3,8 @@
   <div class="card mb-15 " style="width: 22rem;">
     <div id="map" style='width: 22rem; height: 300px;'></div> 
     <div class="card-body">
-      <p>Latitude: <span id="lat">42.361145</span></p>
-      <p>Longitude: <span id="lon">-71.057083</span></p>
+      <p>Latitude: <span id="lat"><%=@tasker.latitude%></span></p>
+      <p>Longitude: <span id="lon"><%=@tasker.longitude%></span></p>
       <h1> <%= @tasker.username %></h1>
       <p>Score: 0.0<%= @tasker.score%></p>
       <p>About: <%= @tasker.about%></p>

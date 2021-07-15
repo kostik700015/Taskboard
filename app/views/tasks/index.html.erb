@@ -4,7 +4,7 @@
     <% @tasks.each do |task|  %>
       <% if !task.is_assigned%>
         <div class="card mb-5 mx-3" style="width: 20rem;">
-          <img class="card-img-top mx-auto" style="width:200px; display: block;" src="/label.jpeg" alt="Card image cap">
+          <img class="card-img-top mx-auto" style="width:200px; display: block;" src="/task-logo.jpg" alt="Card image cap">
           <div class="card-body ">
             <h5 class="card-title text-center"><%= task.title %></h5>
             <p class="card-text"><span class="text-limited"><%= task.description%></span></p>

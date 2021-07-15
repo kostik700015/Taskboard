@@ -4,7 +4,7 @@ class TaskersController < ApplicationController
     end
 
     def create
-      byebug
+      #byebug
       @user = current_user
       @tasker = @user.taskers.new(tasker_params)
       @tasker.skills.replace(params[:skills])
@@ -27,7 +27,7 @@ class TaskersController < ApplicationController
 
     private 
     def tasker_params
-      params.permit(:username, :user_id, :about, :score, :skills)
+      params.permit(:username, :user_id, :about, :score, :skills, :latitude, :longitude)
       # params.require(:tasker).permit(:username, :user_id)
     end
 
