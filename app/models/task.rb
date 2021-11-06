@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  belongs_to :client_tasker, polymorphic: true
+  belongs_to :client
+  belongs_to :tasker
   has_many :offers, dependent: :destroy
-  # belongs_to :tasker 
 end

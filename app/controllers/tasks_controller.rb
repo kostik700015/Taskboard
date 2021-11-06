@@ -4,20 +4,22 @@ class TasksController < ApplicationController
     @tasks = Task.all
   end
 
-  def new 
+  def new
+    byebug
     @client = Client.find_by(user_id: current_user.id)
     @task = @client.tasks.new(params[:task])
   end
 
   def create
-    #byebug
+    byebug
     @client = Client.find_by(user_id: current_user.id)
     @task = @client.tasks.new(task_params)
     # @task = Task.new(task_params)
     if @task.save
-      flash.notice = "The task was created successfully."
       redirect_to task_path(@task)
-    else 
+      flash.notice = "The task was created successfully."
+    else
+      render 'new'
       flash.now.alert = @task.errors.full_messages.to_sentence
     end
 
