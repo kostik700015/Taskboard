@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_000311) do
+ActiveRecord::Schema.define(version: 2021_12_31_004601) do
 
   create_table "clients", force: :cascade do |t|
     t.string "username"
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2021_11_06_000311) do
     t.float "rate"
     t.boolean "is_assigned", default: false
     t.boolean "is_completed", default: false
-    t.integer "tasker_id"
     t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

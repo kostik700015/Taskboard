@@ -5,13 +5,11 @@ class TasksController < ApplicationController
   end
 
   def new
-    byebug
     @client = Client.find_by(user_id: current_user.id)
     @task = @client.tasks.new(params[:task])
   end
 
   def create
-    byebug
     @client = Client.find_by(user_id: current_user.id)
     @task = @client.tasks.new(task_params)
     # @task = Task.new(task_params)
@@ -50,7 +48,7 @@ class TasksController < ApplicationController
     elsif @offer
       @tasker = Tasker.find(@offer.tasker_id)
     end
-    @client = Client.find(@task.client_tasker_id)
+    @client = Client.find(@task.client_id)
   end
 
   def edit
