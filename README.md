@@ -11,7 +11,7 @@ TaskBoard application.
 
 
 		Associations created:
-1. Has_many
-2. Has_many :through.
-3. Polymorphic
-4. Has_one
+	1. Has_many
+	2. Has_many :through.
+	3. Polymorphic
+	4. Has_one
