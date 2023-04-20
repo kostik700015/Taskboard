@@ -9,9 +9,12 @@ TaskBoard application.
 7. Amount of "balance" that task cost will be transferred from client's to tasker's balance.(work in progress)
 
 
-
 		Associations created:
 	1. Has_many
 	2. Has_many :through.
 	3. Polymorphic
 	4. Has_one
+
+![image_2023-04-20_13-01-53](https://user-images.githubusercontent.com/58646723/233437144-514a4a5f-b194-4048-b6b5-16acffc31dd1.png)
+![image_2023-04-20_13-03-38](https://user-images.githubusercontent.com/58646723/233437508-5bc0fa72-38a2-4803-b2b9-1b4311e9c139.png)
+
